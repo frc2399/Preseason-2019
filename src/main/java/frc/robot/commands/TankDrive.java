@@ -8,22 +8,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.subsystems.Drivetrain;
 
 public class TankDrive extends Command {
 
     //insantiate global variables
     Drivetrain dt;
+    OI oi;
 	double leftPercent, rightPercent;
     
     //constructor (takes in drivetrain, left percent, and right percent)
-	public TankDrive(Drivetrain driveTrain, double leftP, double rightP) {
+	public TankDrive(Drivetrain driveTrain, OI operatorInterface) {
         
         //initialize variables
         dt = driveTrain;
-    	leftPercent = leftP;
-    	rightPercent = rightP;
-        
+        oi = operatorInterface;
+
         //needs drivetrain to run
         requires(dt);
         
@@ -37,7 +38,9 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+        leftPercent = oi.leftYAxis();
+        rightPercent = oi.rightYAxis();
+
         //call drivePercent with left percent and right percent speed
         dt.drivePercent(leftPercent, rightPercent);
     }

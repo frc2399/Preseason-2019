@@ -19,16 +19,32 @@ import frc.robot.subsystems.Drivetrain;
 public class OI {
 
   //instantiate global variables
-  Command defaultDrive;
+  private Command defaultDrive;
   Joystick xBox;
+  double leftY;
+  double rightY;
+
 
   //constructor (takes drive train)
   public OI(Drivetrain dt) {
     
     //initialize variables
     xBox = new Joystick(0);
-    double rightY = xBox.getRawAxis(5) * -1;
-    double leftY = xBox.getRawAxis(1) * -1;
-    defaultDrive = new TankDrive(dt, leftY, rightY);
+    defaultDrive = new TankDrive(dt, this);
   }
+
+  public Command defaultDrive() {
+		return defaultDrive;
+  }
+  
+  public double leftYAxis(){
+    leftY = xBox.getRawAxis(1) * -1;
+    return leftY;
+  }
+
+  public double rightYAxis(){
+    rightY = xBox.getRawAxis(5) * -1;
+    return rightY;
+  }
+
 }

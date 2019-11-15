@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
     oi = new OI(dt);
 
     //set initial default command for drive train to default drive
-    dt.initDefaultCommand(oi.defaultDrive);
+    dt.initDefaultCommand(oi.defaultDrive());
   }
 
   /**
