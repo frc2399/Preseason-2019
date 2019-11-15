@@ -24,7 +24,7 @@ public class TankDrive extends Command {
     	leftPercent = leftP;
     	rightPercent = rightP;
         
-        //
+        //needs drivetrain to run
         requires(dt);
         
         //set command to be interruptible
@@ -37,6 +37,8 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        
+        //call drivePercent with left percent and right percent speed
         dt.drivePercent(leftPercent, rightPercent);
     }
 

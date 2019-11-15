@@ -19,6 +19,8 @@ import frc.robot.subsystems.Drivetrain;
  * project.
  */
 public class Robot extends TimedRobot {
+  
+  //instantiate global variables
   public static Drivetrain dt;
   public static OI oi;
 
@@ -28,9 +30,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+
+    //initialize variables
     dt = new Drivetrain();
     oi = new OI(dt);
 
+    //set initial default command for drive train to default drive
     dt.initDefaultCommand(oi.defaultDrive);
   }
 
